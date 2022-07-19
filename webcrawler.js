@@ -5,17 +5,7 @@ const _findDate = () => {
   // find date
 };
 
-// export const getWebAddress = (url, elements) => {
-//     JSDOM.fromURL(url)
-//     .then(dom => {
-//       return dom.serialize();
-//     }).then(data => {
-//         console.log(dom.querySelector('h1').textContent)
-//     });
-// }
-
 export const getWebAddress = (url, elements) => {
-  // console.log(`fetching url ${url}`)
     
     fetch(url)
         .then((response) => {
@@ -26,10 +16,10 @@ export const getWebAddress = (url, elements) => {
         return response.text();
         })
         .then((data) => {
-        // select elements from data
+        
         const dom = new JSDOM(data).window.document;
         elements.hostname = new URL(url).hostname;
-        
+
         try {
             elements.title = dom.querySelector("h1").textContent.trim();
         } catch (e) {
