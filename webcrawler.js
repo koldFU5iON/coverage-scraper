@@ -5,40 +5,43 @@ const _findDate = () => {
   // find date
 };
 
-export const getWebAddress = (url, elements) => {
-    
+const searchQuery = (element, dom) => {
+    try {
+        return dom.querySelector(element).textContent.trim()
+    } catch(e) {
+        console.error(`Error reading contents of ${element} : ${e.message}`);
+    }
+
+};
+
+
+const fetchArticle = async (url) => {
     fetch(url)
-        .then((response) => {
-        if (!response.ok) {
-            throw error;
-        }
+    .then((response) => {
+      if (!response.ok) {
+        throw error;
+      }
 
-        return response.text();
-        })
-        .then((data) => {
-        
-        const dom = new JSDOM(data).window.document;
-        elements.hostname = new URL(url).hostname;
+      return response.text();
+    })
+    .then((data) => {
+      return data;
+    });
+}
 
-        try {
-            elements.title = dom.querySelector("h1").textContent.trim();
-        } catch (e) {
-            console.error(`Error reading contents of 'h1' : ${e.message}`)
-        }
-        //   cannot find a good tag for author
-        //   try {
-        //     elements.author = dom.querySelector("author").textContent.trim();
-        //   } catch (e) {
-        //     console.error(`Error reading contents of 'Author' : ${e.message}`)
-        //   }
-        try {
-            elements.date = dom.querySelector("time").textContent.trim();
-        } catch (e) {
-            console.error(`Error reading contents of 'time' : ${e.message}`)
-        }
+export const getWebAddress = (url, elements) => {
+    elements.hostname = new URL(url).hostname;
+    const html = await fetchArticle(url)
+    const { document } = new JSDOM(html).window
+    // const dom = new JSDOM(fetchArticle(url)) //.window.document;
 
-        console.log(
-            `\n###\n${elements.hostname}\nTitle of page is: \n${elements.title}\nIt was publised on: ${elements.date}`
-        );
-        });
+    console.log(document.getElementsByName('h1').textContent)
+    
+
+    // elements.title = searchQuery('h1', dom)
+    // elements.date = searchQuery('time', dom)
+
+    console.log(
+        `\n###\n${elements.hostname}\nTitle of page is: \n${elements.title}\nIt was publised on: ${elements.date}`
+      );
 };
