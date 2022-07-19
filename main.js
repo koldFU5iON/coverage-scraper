@@ -8,6 +8,7 @@
 
 */
 import { getWebAddress } from "./webcrawler.js"
+const page = {}
 
 const testUrls = [
     "https://www.polygon.com/22989109/unity-tech-demo-enemies-video-hair-face-gdc-2022",
@@ -15,4 +16,7 @@ const testUrls = [
     "https://www.techregister.co.uk/unitys-impressive-new-enemies-short-shows-off-a-remarkably-realistic-digital-human/"
 ]
 
-getWebAddress(testUrls[0]);     
+for(let webAddress of testUrls) {
+    console.log(webAddress)
+    getWebAddress(webAddress, page);
+}
