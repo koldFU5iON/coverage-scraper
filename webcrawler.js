@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import * as cheerio from 'cheerio';
+import { JSDOM } from 'jsdom';
 
 export const getWebAddress = (url) => {
     console.log(`fetching url ${url}`)
@@ -14,9 +14,9 @@ export const getWebAddress = (url) => {
 
     }).then(data => {
        // select elements from data
-       const $ = cheerio.load(data);
-       console.log($.html())
-       
+       const dom = new JSDOM(data)
+       console.log(dom.window.document.querySelector('h1').textContent)
+
     })
 
 }
