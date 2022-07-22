@@ -1,9 +1,9 @@
 /* todo list 
 
 1. fetch url for publication
-2. use express to select elements on page
-3. add to elements to coverage object
-4. update airtable database with elements
+2. use express to select page on page
+3. add to page to coverage object
+4. update airtable database with page
 5. test with multiple source samples, and pick up alternative element fields for lookup
 
 */
@@ -19,5 +19,10 @@ const testUrls = [
 ]
 
 for(let webAddress of testUrls) {
-    getWebAddress(webAddress, page);
+    await getWebAddress(webAddress, page);
+    
+    console.log(
+        `\n###\n${page.hostname}\nTitle of page is: \n${page.title}\nIt was publised on: ${page.date}\nURL: ${page.url}`
+      );
 }
+

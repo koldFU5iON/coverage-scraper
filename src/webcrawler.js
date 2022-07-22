@@ -34,7 +34,5 @@ export const getWebAddress = async (url, elements) => {
   elements.title = await searchQuery("h1", html);
   elements.date = await searchQuery("time", html);
 
-  console.log(
-    `\n###\n${elements.hostname}\nTitle of page is: \n${elements.title}\nIt was publised on: ${elements.date}\nURL: ${elements.url}`
-  );
+  return elements;
 };
