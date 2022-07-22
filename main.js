@@ -19,6 +19,5 @@ const testUrls = [
 ]
 
 for(let webAddress of testUrls) {
-    console.log(webAddress)
     getWebAddress(webAddress, page);
 }
