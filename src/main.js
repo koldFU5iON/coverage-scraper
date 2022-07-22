@@ -33,6 +33,10 @@ for(let webAddress of testUrls) {
 }
 
 // airtable record lookup
-console.log(await findRecord("reccdemVBChP3bvBf"))
+
+export const lookUpRecord = async (id) => {
+    await findRecord(id)
+}
+
 
 console.log(page)

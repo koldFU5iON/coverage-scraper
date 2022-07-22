@@ -1,5 +1,5 @@
 import express from "express";
-import { steamGame } from "./main.js";
+import { lookUpRecord } from "./main.js";
 import 'dotenv/config'
 
 const app = express();
@@ -12,18 +12,16 @@ app.listen(
     () => {console.log(`server running on http://localhost:${PORT}`)
 })
 
-app.get('/steam-game/:id',(req,res) => {
+app.get('/', (req, res) => {
+    res.send('connection established')
+})
+// "reccdemVBChP3bvBf"
+app.get('/coverage/:id',(req,res) => {
     const { id } = req.params
     if(!id) {
         res.status(200).send(`could not read ID : ${id}`)
     } else{
         res.status(200).send(`successfully recieved ${id}`)
-        steamGame(id)
+        lookUpRecord(id)
     }
-})
-
-
-// todo 
-app.get('/nintendo-game/:id', (req, res) => {
-    const { id } = req.params
 })
