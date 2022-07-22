@@ -24,19 +24,20 @@ const testUrls = [
 
 // web crawler look up
 
-for(let webAddress of testUrls) {
-    await getWebAddress(webAddress, page);
+const testCrawler = async () => {
+    for(let webAddress of testUrls) {
+        await getWebAddress(webAddress, page);
 
-    console.log(
-        `\n###\n${page.hostname}\nTitle of page is: \n${page.title}\nIt was publised on: ${page.date}\nURL: ${page.url}`
-      );
+        console.log(
+            `\n###\n${page.hostname}\nTitle of page is: \n${page.title}\nIt was publised on: ${page.date}\nURL: ${page.url}`
+        );
+    }
 }
+
+// testCrawler();
 
 // airtable record lookup
 
 export const lookUpRecord = async (id) => {
-    await findRecord(id)
+    console.log(await findRecord(id))
 }
-
-
-console.log(page)

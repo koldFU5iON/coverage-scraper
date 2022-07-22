@@ -2,12 +2,12 @@
   "name": "coverage-scanner",
   "version": "1.0.0",
   "description": "",
-  "main": "src/main.js",
+  "main": "src/index.js",
   "type": "module",
   "scripts": {
     "devStart": "nodemon src/index.js"
   },
-  "author": "",
+  "author": "Devon Stanton",
   "license": "ISC",
   "dependencies": {
     "airtable": "^0.11.4",
