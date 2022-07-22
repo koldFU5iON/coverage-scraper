@@ -2,11 +2,10 @@ import Airtable from "airtable";
 import "dotenv/config";
 
 const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(
-  "appl2a4TBuQImJIiu"
+  "appuZbTkbJfdUXxMc"
 );
 
-// let recordID = 'recxZLSGzpE43yvdq' // test record
-const tableID = "tblMXiuJrT9lvXo6U";
+const tableID = "tbldgsajJYMawpWxC";
 const table = base(tableID);
 
 export const findRecord = async (recordID) => {
@@ -31,14 +30,6 @@ export const updateRecord = async (recordID, data) => {
 export const createField = async (recordID, data, field) => {
   table.update(recordID, "Genre");
 };
-
-// {
-//     "id": "rectL3Mp4Dg6MX2y8",
-//     "fields": {
-//       "MWU Owner *": [
-//         "recb5jCkqKsbMbSSZ"
-//       ],
-// }
 
 export const updateRecords = async (records) => {
   table.update(records);

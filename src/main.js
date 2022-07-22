@@ -8,8 +8,11 @@
 
 */
 import { getWebAddress } from "./webcrawler.js"
+import { findRecord, updateRecord } from "./airtable.js";
 const page = {}
 
+
+//test content
 const testUrls = [
     "https://www.polygon.com/22989109/unity-tech-demo-enemies-video-hair-face-gdc-2022",
     "https://www.gamesradar.com/unitys-tech-demo-enemies-features-a-stunningly-realistic-digital-human/",
@@ -18,11 +21,18 @@ const testUrls = [
     "https://www.nme.com/news/gaming-news/unity-announces-merger-with-ironsource-3268414"
 ]
 
+
+// web crawler look up
+
 for(let webAddress of testUrls) {
     await getWebAddress(webAddress, page);
-    
+
     console.log(
         `\n###\n${page.hostname}\nTitle of page is: \n${page.title}\nIt was publised on: ${page.date}\nURL: ${page.url}`
       );
 }
 
+// airtable record lookup
+console.log(await findRecord("reccdemVBChP3bvBf"))
+
+console.log(page)
